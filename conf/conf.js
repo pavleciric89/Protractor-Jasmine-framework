@@ -1,3 +1,5 @@
+var HtmlReporter = require('C://Users/Pavle/AppData/Roaming/npm/node_modules/protractor/node_modules/protractor-beautiful-reporter');
+
 // An example configuration file.
 exports.config = {
   directConnect: true,
@@ -18,4 +20,10 @@ exports.config = {
   jasmineNodeOpts: {
     defaultTimeoutInterval: 30000,
   },
+  onPrepare: function () {
+    // Add a screenshot reporter and store screenshots to `/tmp/screenshots`:
+    jasmine.getEnv().addReporter(new HtmlReporter({
+      baseDirectory: 'Reports/screenshots'
+    }).getJasmine2Reporter());
+  }
 };
